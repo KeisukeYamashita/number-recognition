@@ -1,9 +1,11 @@
 # coding: utf-8
-import sys, os
-sys.path.append(os.pardir)
-import numpy as np
+import sys
+import os
 from layers import *
 from collections import OrderedDict
+import numpy as np
+
+sys.path.append(os.pardir)
 
 
 class TwoLayerNet:
