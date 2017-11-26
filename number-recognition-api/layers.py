@@ -59,6 +59,17 @@ class SoftmaxWithLoss:
 
         return self.loss
 
+    def backward(self, dout=1):
+        batch_size = self.t.shape[0]
+        if self.t.size == self.y.size:
+            dx = (self.y - self.t) / batch_size
+        else:
+            dx = self.y.copy()
+            dx[np.arange(batch_size), self.t] -= 1
+            dx /= batch_size
+
+        return dx
+
     @staticmethod
     def _softmax(x):
         if x.ndim == 2:
