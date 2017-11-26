@@ -1,4 +1,8 @@
+# coding: utf-8
 from flask import Flask
+from two_layer_net import TwoLayerNet
+from train_neural_network import train_neural_network
+
 
 app = Flask(__name__)
 
