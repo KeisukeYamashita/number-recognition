@@ -10,13 +10,22 @@ trainer = Trainer()
 @app.route('/train', methods=['GET'])
 def train():
     trainer.train()
-    return jsonify({ 'train_status': trainer.train_status })
+    return jsonify({
+        'train_status': trainer.train_status
+    })
 
 
 @app.route('/predict', methods=['POST'])
 def predict():
     # trainer.network.predict()
     return 'predict'
+
+
+@app.route('/status', methods=['GET'])
+def status():
+    return jsonify({
+        'train_status': trainer.train_status
+    })
 
 
 if __name__ == '__main__':
