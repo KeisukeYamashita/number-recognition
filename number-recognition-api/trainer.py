@@ -44,9 +44,7 @@ class Trainer:
             if i % iter_per_epoch == 0:
                 train_acc = self.network.accuracy(x_train, t_train)
                 test_acc = self.network.accuracy(x_test, t_test)
-                print("loss: " + str(loss))
-                print("train_acc: " + str(train_acc))
-                print("test_acc: " + str(test_acc))
-                print("Progress: " + str(i) + " / " + str(iters_num))
+                print("loss\t\ttrain_acc\t\ttest_acc\t\titerations")
+                print(str(loss) + "\t\t" + str(train_acc) + "\t\t" + str(test_acc) + "\t\t" + str(i) + "/" + str(iters_num))
 
         self.train_status = 'well trained'

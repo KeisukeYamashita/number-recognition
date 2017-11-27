@@ -1,6 +1,7 @@
 # coding: utf-8
 from flask import Flask, jsonify
 from trainer import Trainer
+import threading
 
 
 app = Flask(__name__)
@@ -29,7 +30,8 @@ def index():
 
 @app.route('/train', methods=['GET'])
 def train():
-    trainer.train()
+    if trainer.train_status != 'now training':
+        start_training()
     return jsonify({
         'train_status': trainer.train_status
     })
@@ -48,6 +50,12 @@ def status():
     })
 
 
+def start_training():
+    th = threading.Thread(target=trainer.train, name='th', args=())
+    th.setDaemon(True)
+    th.start()
+
+
 if __name__ == '__main__':
+    start_training()
     app.run(debug=True, host='localhost', port=3000)
-    trainer.train()
