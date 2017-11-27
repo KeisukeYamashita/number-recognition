@@ -7,6 +7,26 @@ app = Flask(__name__)
 trainer = Trainer()
 
 
+@app.route('/')
+def index():
+    return jsonify({
+        'endpoints': [
+            {
+                'path': '/train',
+                'method': ['GET']
+            },
+            {
+                'path': '/status',
+                'method': ['GET']
+            },
+            {
+                'path': '/predict',
+                'method': ['POST']
+            }
+        ]
+    })
+
+
 @app.route('/train', methods=['GET'])
 def train():
     trainer.train()
