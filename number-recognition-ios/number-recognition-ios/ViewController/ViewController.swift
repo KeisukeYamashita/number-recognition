@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var trainStatusLabel: UILabel!
     @IBOutlet private weak var drawableView: DrawableView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var numberLabel: UILabel!
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
     }
 
     func setStatus(_ status: TrainStatus) {
+        trainStatusLabel.text = status.rawValue
     }
 
 }
