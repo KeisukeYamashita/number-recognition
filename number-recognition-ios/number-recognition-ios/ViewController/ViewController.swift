@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var numberLabel: UILabel!
 
+    @IBAction func reload(_ sender: Any) {
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setBorder(view: drawableView)
