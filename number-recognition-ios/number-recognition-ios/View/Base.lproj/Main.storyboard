@@ -1,24 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cGb-lH-vdN">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--手書き数字認識-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="number_recognition_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qc-gV-qnT">
+                                <rect key="frame" x="16" y="475.66666666666669" width="167.66666666666666" height="167.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2Qc-gV-qnT" secondAttribute="height" multiplier="1:1" id="9aT-c7-BoB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLD-xT-xnA">
+                                <rect key="frame" x="191.66666666666663" y="475.66666666666669" width="167.33333333333337" height="167.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SLD-xT-xnA" secondAttribute="height" multiplier="1:1" id="bO9-Da-Lfj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVe-Rj-khT" customClass="DrawableView" customModule="number_recognition_ios" customModuleProvider="target">
+                                <rect key="frame" x="16" y="124.66666666666669" width="343" height="343"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nVe-Rj-khT" secondAttribute="height" multiplier="1:1" id="ZWf-bp-lTe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学習中です..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qk6-q5-eLo">
+                                <rect key="frame" x="16" y="96" width="343" height="20.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qk6-q5-eLo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1mC-8g-UQ7"/>
+                            <constraint firstItem="Qk6-q5-eLo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="2Ef-kf-gzb"/>
+                            <constraint firstItem="SLD-xT-xnA" firstAttribute="width" secondItem="2Qc-gV-qnT" secondAttribute="width" id="KGf-2D-OR9"/>
+                            <constraint firstItem="2Qc-gV-qnT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Mwa-5G-3tt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qk6-q5-eLo" secondAttribute="trailing" constant="16" id="NNI-je-QAc"/>
+                            <constraint firstItem="SLD-xT-xnA" firstAttribute="leading" secondItem="2Qc-gV-qnT" secondAttribute="trailing" constant="8" id="Shh-ae-K4i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nVe-Rj-khT" secondAttribute="trailing" constant="16" id="ewB-OI-NDV"/>
+                            <constraint firstItem="SLD-xT-xnA" firstAttribute="top" secondItem="nVe-Rj-khT" secondAttribute="bottom" constant="8" id="hXQ-TD-osY"/>
+                            <constraint firstItem="nVe-Rj-khT" firstAttribute="top" secondItem="Qk6-q5-eLo" secondAttribute="bottom" constant="8" id="tJu-0R-V2s"/>
+                            <constraint firstItem="nVe-Rj-khT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uD9-be-7Dm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SLD-xT-xnA" secondAttribute="trailing" constant="16" id="uqK-of-sB1"/>
+                            <constraint firstItem="2Qc-gV-qnT" firstAttribute="top" secondItem="nVe-Rj-khT" secondAttribute="bottom" constant="8" id="yEU-oQ-4ht"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="手書き数字認識" id="jz8-g3-rdS">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="8DP-DM-uh8"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="drawableView" destination="nVe-Rj-khT" id="y9W-gA-kxJ"/>
+                        <outlet property="imageView" destination="2Qc-gV-qnT" id="Jay-Ie-Dyq"/>
+                        <outlet property="numberLabel" destination="SLD-xT-xnA" id="3Di-f2-FVc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="532.5" y="133.09859154929578"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="85a-xG-Jod">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cGb-lH-vdN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RF6-hh-BRe">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DcZ-hp-fTs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52p-XY-k1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="133"/>
         </scene>
     </scenes>
 </document>

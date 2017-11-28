@@ -10,12 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var drawableView: DrawableView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var numberLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBorder(view: drawableView)
+        setBorder(view: imageView)
+        setBorder(view: numberLabel)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    private func setBorder(view: UIView) {
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1.0
     }
 
 }

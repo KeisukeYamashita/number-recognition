@@ -20,7 +20,7 @@ class Line {
 
 class DrawableView: UIView {
 
-    var lineWidth: CGFloat = 15.0
+    var lineWidth: CGFloat = 10.0
     var lineColor: UIColor = .black
 
     var lines: [Line] = []
@@ -28,6 +28,7 @@ class DrawableView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+
         let path = UIBezierPath()
         path.lineCapStyle = .round
         for line in lines {
