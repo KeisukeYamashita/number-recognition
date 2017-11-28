@@ -16,6 +16,7 @@
 		57C98FC61FCDA29F00718A72 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C98FC51FCDA29F00718A72 /* JSONObject.swift */; };
 		57C98FC91FCDA36C00718A72 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C98FC81FCDA36C00718A72 /* APIEndpoint.swift */; };
 		57C98FCB1FCDA3B400718A72 /* NumRecogEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C98FCA1FCDA3B400718A72 /* NumRecogEndpoint.swift */; };
+		57C98FCD1FCDA4B500718A72 /* GetStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C98FCC1FCDA4B500718A72 /* GetStatusService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		57C98FC51FCDA29F00718A72 /* JSONObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
 		57C98FC81FCDA36C00718A72 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		57C98FCA1FCDA3B400718A72 /* NumRecogEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumRecogEndpoint.swift; sourceTree = "<group>"; };
+		57C98FCC1FCDA4B500718A72 /* GetStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatusService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				57C98FC81FCDA36C00718A72 /* APIEndpoint.swift */,
 				57C98FCA1FCDA3B400718A72 /* NumRecogEndpoint.swift */,
+				57C98FCC1FCDA4B500718A72 /* GetStatusService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				57C98FC31FCC92E200718A72 /* DrawableView.swift in Sources */,
 				5791AE8F1FCC8F4D006AF330 /* ViewController.swift in Sources */,
 				5791AE8D1FCC8F4D006AF330 /* AppDelegate.swift in Sources */,
+				57C98FCD1FCDA4B500718A72 /* GetStatusService.swift in Sources */,
 				57C98FC91FCDA36C00718A72 /* APIEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

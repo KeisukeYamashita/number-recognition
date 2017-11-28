@@ -15,6 +15,14 @@ class ViewController: UIViewController {
     @IBOutlet private weak var numberLabel: UILabel!
 
     @IBAction func reload(_ sender: Any) {
+        GetStatusService().request(URLSession.shared) { result in
+            switch result {
+            case .success(let res):
+                self.setStatus(res.status)
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -27,6 +35,9 @@ class ViewController: UIViewController {
     private func setBorder(view: UIView) {
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1.0
+    }
+
+    func setStatus(_ status: TrainStatus) {
     }
 
 }
