@@ -16,6 +16,7 @@ protocol APIEndpoint {
     var method: HTTPMethod { get }
     var query: [String: String]? { get }
     var headers: [String: String]? { get }
+    var body: [String: Any]? { get }
     associatedtype ResponseType: JSONDecodable
 }
 
@@ -29,8 +30,8 @@ extension APIEndpoint {
     var headers: [String: String]? {
         return nil
     }
-    var body: [String: Any] {
-        return [:]
+    var body: [String: Any]? {
+        return nil
     }
 }
 
@@ -44,7 +45,7 @@ extension APIEndpoint {
         for (key, value) in headers ?? [:] {
             req.addValue(value, forHTTPHeaderField: key)
         }
-        req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        req.httpBody = try? JSONSerialization.data(withJSONObject: body ?? [:], options: [])
 
         return req
     }
