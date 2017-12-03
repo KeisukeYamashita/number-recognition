@@ -53,4 +53,9 @@ class DrawableView: UIView {
         setNeedsDisplay()
     }
 
+    func clear() {
+        lines.removeAll()
+        setNeedsDisplay()
+    }
+
 }

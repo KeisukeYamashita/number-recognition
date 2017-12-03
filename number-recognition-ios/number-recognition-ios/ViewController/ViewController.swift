@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clearButtonTapped(_ sender: Any) {
+        drawableView.clear()
     }
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
