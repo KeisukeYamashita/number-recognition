@@ -58,4 +58,22 @@ class DrawableView: UIView {
         setNeedsDisplay()
     }
 
+    private func getOriginalImage() -> UIImage? {
+        UIGraphicsBeginImageContext(frame.size)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    func getResizedImage() -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: 28, height: 28)
+        UIGraphicsBeginImageContext(rect.size)
+        getOriginalImage()?.draw(in: rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
 }

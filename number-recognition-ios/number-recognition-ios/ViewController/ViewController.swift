@@ -28,9 +28,14 @@ class ViewController: UIViewController {
 
     @IBAction func clearButtonTapped(_ sender: Any) {
         drawableView.clear()
+        imageView.image = nil
     }
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
+        removeBorder(view: drawableView)
+        let image = drawableView.getResizedImage()
+        imageView.image = image
+        setBorder(view: drawableView)
     }
 
     override func viewDidLoad() {
@@ -43,6 +48,11 @@ class ViewController: UIViewController {
     private func setBorder(view: UIView) {
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1.0
+    }
+
+    private func removeBorder(view: UIView) {
+        view.layer.borderColor = nil
+        view.layer.borderWidth = 0.0
     }
 
     func setStatus(_ status: TrainStatus) {
