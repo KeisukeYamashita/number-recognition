@@ -29,6 +29,9 @@ extension APIEndpoint {
     var headers: [String: String]? {
         return nil
     }
+    var body: [String: Any]? {
+        return nil
+    }
 }
 
 extension APIEndpoint {
@@ -38,6 +41,9 @@ extension APIEndpoint {
 
         var req = URLRequest(url: components?.url ?? url)
         req.httpMethod = method.rawValue
+        if let body = body {
+            req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        }
         for (key, value) in headers ?? [:] {
             req.addValue(value, forHTTPHeaderField: key)
         }

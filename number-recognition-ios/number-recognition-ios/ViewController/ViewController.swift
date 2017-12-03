@@ -46,6 +46,20 @@ class ViewController: UIViewController {
             let gray = UInt8((2 * Int(r) + 4 * Int(g) + Int(b)) / 7)
             data.append(gray)
         }
+
+        RecognizeNumberService(data: data).request(URLSession.shared) { result in
+            switch result {
+            case .success(let res):
+                DispatchQueue.main.async {
+                    self.numberLabel.text = res.answer
+                }
+            case .failure(let err):
+                print(err)
+                DispatchQueue.main.async {
+                    self.numberLabel.text = "?"
+                }
+            }
+        }
     }
 
     override func viewDidLoad() {
