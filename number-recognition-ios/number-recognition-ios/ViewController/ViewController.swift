@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var drawableView: DrawableView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var numberLabel: UILabel!
+    @IBOutlet private weak var confidenceLabel: UILabel!
 
     @IBAction func reload(_ sender: Any) {
         GetStatusService().request(URLSession.shared) { result in
@@ -29,6 +30,8 @@ class ViewController: UIViewController {
     @IBAction func clearButtonTapped(_ sender: Any) {
         drawableView.clear()
         imageView.image = nil
+        numberLabel.text = "?"
+        confidenceLabel.text = nil
     }
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
@@ -52,6 +55,7 @@ class ViewController: UIViewController {
             case .success(let res):
                 DispatchQueue.main.async {
                     self.numberLabel.text = res.answer
+                    self.confidenceLabel.text = String(Double(res.confidence) * 100) + "%"
                 }
             case .failure(let err):
                 print(err)
