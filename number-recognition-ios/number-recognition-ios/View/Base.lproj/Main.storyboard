@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" secondItem="2Qc-gV-qnT" secondAttribute="height" multiplier="1:1" id="9aT-c7-BoB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLD-xT-xnA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLD-xT-xnA">
                                 <rect key="frame" x="164" y="418" width="136" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SLD-xT-xnA" secondAttribute="height" multiplier="1:1" id="bO9-Da-Lfj"/>
@@ -69,8 +69,8 @@
                                     <action selector="recognizeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FC1-A5-xH9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="95%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuY-XU-LRB">
-                                <rect key="frame" x="262" y="529" width="34" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuY-XU-LRB">
+                                <rect key="frame" x="296" y="550" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
