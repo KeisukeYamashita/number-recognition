@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             switch result {
             case .success(let res):
                 DispatchQueue.main.async {
-                    self.numberLabel.text = res.answer
+                    self.numberLabel.text = String(res.answer)
                     self.confidenceLabel.text = String(Double(res.confidence) * 100) + "%"
                 }
             case .failure(let err):

@@ -22,7 +22,7 @@ struct RecognizeNumberService: NumRecogEndpoint {
 }
 
 struct RecognizeNumberResult: JSONDecodable {
-    let answer: String
+    let answer: Int
     let confidence: Double
 
     init(json: JSONObject) throws {
