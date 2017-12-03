@@ -20,7 +20,9 @@ class ViewController: UIViewController {
         GetStatusService().request(URLSession.shared) { result in
             switch result {
             case .success(let res):
-                self.setStatus(res.status)
+                DispatchQueue.main.async {
+                    self.setStatus(res.status)
+                }
             case .failure(let err):
                 print(err)
             }
