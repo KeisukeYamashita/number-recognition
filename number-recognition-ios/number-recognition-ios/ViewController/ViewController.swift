@@ -26,6 +26,12 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func clearButtonTapped(_ sender: Any) {
+    }
+
+    @IBAction func recognizeButtonTapped(_ sender: Any) {
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setBorder(view: drawableView)
