@@ -48,3 +48,9 @@ class Trainer:
                 print(str(loss) + "\t\t" + str(train_acc) + "\t\t" + str(test_acc) + "\t\t" + str(i) + "/" + str(iters_num))
 
         self.train_status = 'well trained'
+
+    def predict(self, x):
+        x = np.array(x)
+        y = self.network.predict(x)
+        i = np.argmax(y)
+        return (i, y[i])

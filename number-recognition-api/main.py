@@ -1,5 +1,5 @@
 # coding: utf-8
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from trainer import Trainer
 import threading
 
@@ -39,9 +39,13 @@ def train():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # trainer.network.predict()
-    return 'predict'
-
+    json = request.get_json(force=True, silent=True)
+    data = json["data"]
+    answer, confidence = trainer.predict(data)
+    return jsonify({
+        "answer": answer,
+        "confidence": predict,
+    })
 
 @app.route('/status', methods=['GET'])
 def status():
