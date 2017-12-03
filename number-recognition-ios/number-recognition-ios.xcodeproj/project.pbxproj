@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573698E11FD44C690015E949 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573698E01FD44C690015E949 /* UIImage+.swift */; };
 		5791AE8D1FCC8F4D006AF330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791AE8C1FCC8F4D006AF330 /* AppDelegate.swift */; };
 		5791AE8F1FCC8F4D006AF330 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791AE8E1FCC8F4D006AF330 /* ViewController.swift */; };
 		5791AE921FCC8F4E006AF330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5791AE901FCC8F4E006AF330 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		573698E01FD44C690015E949 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		5791AE891FCC8F4D006AF330 /* number-recognition-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "number-recognition-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5791AE8C1FCC8F4D006AF330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5791AE8E1FCC8F4D006AF330 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		573698DF1FD44C330015E949 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				573698E01FD44C690015E949 /* UIImage+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		5791AE801FCC8F4D006AF330 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		5791AE8B1FCC8F4D006AF330 /* number-recognition-ios */ = {
 			isa = PBXGroup;
 			children = (
+				573698DF1FD44C330015E949 /* Extension */,
 				57C98FC71FCDA35B00718A72 /* Service */,
 				57C98FC41FCDA28A00718A72 /* Utility */,
 				57C98FC11FCC928200718A72 /* ViewController */,
@@ -188,6 +199,7 @@
 				57C98FC31FCC92E200718A72 /* DrawableView.swift in Sources */,
 				5791AE8F1FCC8F4D006AF330 /* ViewController.swift in Sources */,
 				5791AE8D1FCC8F4D006AF330 /* AppDelegate.swift in Sources */,
+				573698E11FD44C690015E949 /* UIImage+.swift in Sources */,
 				57C98FCD1FCDA4B500718A72 /* GetStatusService.swift in Sources */,
 				57C98FC91FCDA36C00718A72 /* APIEndpoint.swift in Sources */,
 			);

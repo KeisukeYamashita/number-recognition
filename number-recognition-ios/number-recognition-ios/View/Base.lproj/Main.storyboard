@@ -92,7 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="手書き数字認識" id="jz8-g3-rdS">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="8DP-DM-uh8">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="refresh" id="8DP-DM-uh8">
                             <connections>
                                 <action selector="reload:" destination="BYZ-38-t0r" id="qs4-kp-XRR"/>
                             </connections>

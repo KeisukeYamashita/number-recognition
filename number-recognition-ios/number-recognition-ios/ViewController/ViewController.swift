@@ -36,6 +36,16 @@ class ViewController: UIViewController {
         let image = drawableView.getResizedImage()
         imageView.image = image
         setBorder(view: drawableView)
+
+        guard let rgbaData = image?.getPixels() else { return }
+        var data = [UInt8]()
+        for i in 0..<28*28 {
+            let r = rgbaData[4 * i]
+            let g = rgbaData[4 * i + 1]
+            let b = rgbaData[4 * i + 2]
+            let gray = UInt8((2 * Int(r) + 4 * Int(g) + Int(b)) / 7)
+            data.append(gray)
+        }
     }
 
     override func viewDidLoad() {
