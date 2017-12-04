@@ -17,16 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var confidenceLabel: UILabel!
 
     @IBAction func reload(_ sender: Any) {
-        GetStatusService().request(URLSession.shared) { result in
-            switch result {
-            case .success(let res):
-                DispatchQueue.main.async {
-                    self.setStatus(res.status)
-                }
-            case .failure(let err):
-                print(err)
-            }
-        }
+        updateStatus()
     }
 
     @IBAction func clearButtonTapped(_ sender: Any) {
@@ -38,8 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
         removeBorder(view: drawableView)
-        let image = drawableView.getImage()
-        let scaledImage = image.scale(to: CGSize(width: 28, height: 28))
+        let scaledImage = drawableView.getImage().scale(to: CGSize(width: 28, height: 28))
         imageView.image = scaledImage
         setBorder(view: drawableView)
 
@@ -67,6 +57,7 @@ class ViewController: UIViewController {
         setBorder(view: drawableView)
         setBorder(view: imageView)
         setBorder(view: numberLabel)
+        updateStatus()
     }
 
     private func setBorder(view: UIView) {
@@ -77,6 +68,19 @@ class ViewController: UIViewController {
     private func removeBorder(view: UIView) {
         view.layer.borderColor = nil
         view.layer.borderWidth = 0.0
+    }
+
+    private func updateStatus() {
+        GetStatusService().request(URLSession.shared) { result in
+            switch result {
+            case .success(let res):
+                DispatchQueue.main.async {
+                    self.setStatus(res.status)
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
 
     func setStatus(_ status: TrainStatus) {

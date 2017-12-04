@@ -32,8 +32,8 @@ extension UIImage {
         var position = 0
         for _ in 0..<Int(self.size.height) {
             for _ in 0..<Int(self.size.width) {
-                let alpha = Float(data[position + 3])
-                pixelsArray.append(alpha / 255)
+                let g = Float(data[position + 2])
+                pixelsArray.append(1.0 - g / 255)
                 position += bytesPerPixel
             }
             if position % bytesPerRow != 0 {
