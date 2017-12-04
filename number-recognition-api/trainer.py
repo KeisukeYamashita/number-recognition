@@ -54,4 +54,5 @@ class Trainer:
         x = x.reshape(1, 784)
         y = self.network.predict(x)
         i = np.argmax(y)
+        y = self.network.lastLayer.softmax(y)
         return (i, y[0][i])

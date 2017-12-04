@@ -54,7 +54,7 @@ class SoftmaxWithLoss:
 
     def forward(self, x, t):
         self.t = t
-        self.y = self._softmax(x)
+        self.y = self.softmax(x)
         self.loss = self._cross_entropy_error(self.y, self.t)
 
         return self.loss
@@ -71,7 +71,7 @@ class SoftmaxWithLoss:
         return dx
 
     @staticmethod
-    def _softmax(x):
+    def softmax(x):
         if x.ndim == 2:
             x = x.T
             x = x - np.max(x, axis=0)
