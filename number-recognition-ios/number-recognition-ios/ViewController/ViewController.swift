@@ -38,19 +38,12 @@ class ViewController: UIViewController {
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
         removeBorder(view: drawableView)
-        let image = drawableView.getResizedImage()
-        imageView.image = image
+        let image = drawableView.getImage()
+        let scaledImage = image.scale(to: CGSize(width: 28, height: 28))
+        imageView.image = scaledImage
         setBorder(view: drawableView)
 
-        guard let rgbaData = image?.getPixels() else { return }
-        var data = [UInt8]()
-        for i in 0..<28*28 {
-            let r = rgbaData[4 * i]
-            let g = rgbaData[4 * i + 1]
-            let b = rgbaData[4 * i + 2]
-            let gray = UInt8((2 * Int(r) + 4 * Int(g) + Int(b)) / 7)
-            data.append(gray)
-        }
+        guard let data = scaledImage.scan() else { return }
 
         RecognizeNumberService(data: data).request(URLSession.shared) { result in
             switch result {
@@ -63,6 +56,7 @@ class ViewController: UIViewController {
                 print(err)
                 DispatchQueue.main.async {
                     self.numberLabel.text = "?"
+                    self.confidenceLabel.text = nil
                 }
             }
         }

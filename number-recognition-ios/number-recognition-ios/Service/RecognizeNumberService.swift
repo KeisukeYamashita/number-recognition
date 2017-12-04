@@ -14,9 +14,9 @@ struct RecognizeNumberService: NumRecogEndpoint {
     var body: [String : Any]? { return [ "data": data ] }
     typealias ResponseType = RecognizeNumberResult
 
-    let data: [UInt8]
+    let data: [Float]
 
-    init(data: [UInt8]) {
+    init(data: [Float]) {
         self.data = data
     }
 }

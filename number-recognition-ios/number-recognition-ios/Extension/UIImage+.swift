@@ -10,13 +10,37 @@ import UIKit
 
 extension UIImage {
 
-    func getPixels() -> [UInt8] {
-        guard let image = cgImage else { return [] }
-        guard let data = image.dataProvider?.data else { return [] }
-        let length = CFDataGetLength(data)
-        var rawData = [UInt8](repeating: 0, count: length)
-        CFDataGetBytes(data, CFRange(location: 0, length: length), &rawData)
-        return rawData
+    func scale(to size: CGSize) -> UIImage {
+        let newRect = CGRect(x: 0, y: 0, width: size.width, height: size.height).integral
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.interpolationQuality = .none
+        self.draw(in: newRect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+
+    func scan() -> [Float]? {
+        guard let cgImage = self.cgImage else { return nil }
+        guard let pixelData = cgImage.dataProvider?.data else { return nil }
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        let bytesPerRow = cgImage.bytesPerRow
+        let bytesPerPixel = cgImage.bitsPerPixel / 8
+
+        var pixelsArray = [Float]()
+        var position = 0
+        for _ in 0..<Int(self.size.height) {
+            for _ in 0..<Int(self.size.width) {
+                let alpha = Float(data[position + 3])
+                pixelsArray.append(alpha / 255)
+                position += bytesPerPixel
+            }
+            if position % bytesPerRow != 0 {
+                position += (bytesPerRow - (position % bytesPerRow))
+            }
+        }
+        return pixelsArray
     }
 
 }
