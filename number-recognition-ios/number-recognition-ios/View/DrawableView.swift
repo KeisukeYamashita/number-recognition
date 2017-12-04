@@ -20,7 +20,7 @@ class Line {
 
 class DrawableView: UIView {
 
-    var lineWidth: CGFloat = 10.0
+    var lineWidth: CGFloat = 20.0
     var lineColor: UIColor = .black
 
     var lines: [Line] = []
