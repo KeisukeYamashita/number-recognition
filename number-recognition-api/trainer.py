@@ -51,6 +51,7 @@ class Trainer:
 
     def predict(self, x):
         x = np.array(x)
+        x = x.reshape(1, 784)
         y = self.network.predict(x)
         i = np.argmax(y)
-        return (i, y[i])
+        return (i, y[0][i])

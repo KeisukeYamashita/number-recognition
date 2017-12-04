@@ -43,8 +43,8 @@ def predict():
     data = json["data"]
     answer, confidence = trainer.predict(data)
     return jsonify({
-        "answer": answer,
-        "confidence": predict,
+        "answer": str(answer),
+        "confidence": str(confidence),
     })
 
 @app.route('/status', methods=['GET'])
