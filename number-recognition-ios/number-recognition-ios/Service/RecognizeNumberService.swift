@@ -22,8 +22,8 @@ struct RecognizeNumberService: NumRecogEndpoint {
 }
 
 struct RecognizeNumberResult: JSONDecodable {
-    let answer: Int
-    let confidence: Double
+    let answer: String
+    let confidence: String
 
     init(json: JSONObject) throws {
         self.answer = try json.get("answer")
