@@ -23,8 +23,10 @@ class DrawableView: UIView {
     var lineWidth: CGFloat = 25.0
     var lineColor: UIColor = .black
 
-    var lines: [Line] = []
-    var lastPoint: CGPoint?
+    private var lines: [Line] = []
+    private var lastPoint: CGPoint?
+
+    private var drawingArea: CGRect?
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -51,6 +53,36 @@ class DrawableView: UIView {
         lines.append(newLine)
         self.lastPoint = newPoint
         setNeedsDisplay()
+
+        if drawingArea == nil {
+            let x = newPoint.x - lineWidth
+            let y = newPoint.y - lineWidth
+            drawingArea = CGRect(x: x, y: y, width: lineWidth, height: lineWidth)
+        }
+        stretchDrawingArea(to: newPoint)
+    }
+
+    private func stretchDrawingArea(to newPoint: CGPoint) {
+        guard let area = drawingArea else { return }
+        if newPoint.x < area.minX {
+            updateDrawingArea(minX: newPoint.x, minY: nil, maxX: nil, maxY: nil)
+        } else if newPoint.x > area.maxX {
+            updateDrawingArea(minX: nil, minY: nil, maxX: newPoint.x, maxY: nil)
+        }
+        if newPoint.y < area.minY {
+            updateDrawingArea(minX: nil, minY: newPoint.y, maxX: nil, maxY: nil)
+        } else if newPoint.y > area.maxY {
+            updateDrawingArea(minX: nil, minY: nil, maxX: nil, maxY: newPoint.y)
+        }
+    }
+
+    private func updateDrawingArea(minX: CGFloat?, minY: CGFloat?, maxX: CGFloat?, maxY: CGFloat?) {
+        guard let area = drawingArea else { return }
+        let x = minX ?? area.minX
+        let y = minY ?? area.minY
+        let width = maxX ?? area.maxX - x
+        let height = maxY ?? area.maxY - y
+        drawingArea = CGRect(x: x, y: y, width: width, height: height)
     }
 
     func clear() {
