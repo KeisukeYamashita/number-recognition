@@ -65,16 +65,16 @@ class DrawableView: UIView {
     private func stretchDrawingArea(to newPoint: CGPoint) {
         guard let area = drawingArea else { return }
         if newPoint.x < area.minX {
-            updateDrawingArea(minX: newPoint.x, minY: nil, maxX: nil, maxY: nil)
+            updateDrawingArea(minX: newPoint.x - 10, minY: nil, maxX: nil, maxY: nil)
         }
         if newPoint.x > area.maxX {
-            updateDrawingArea(minX: nil, minY: nil, maxX: newPoint.x, maxY: nil)
+            updateDrawingArea(minX: nil, minY: nil, maxX: newPoint.x + 10, maxY: nil)
         }
         if newPoint.y < area.minY {
-            updateDrawingArea(minX: nil, minY: newPoint.y, maxX: nil, maxY: nil)
+            updateDrawingArea(minX: nil, minY: newPoint.y - 10, maxX: nil, maxY: nil)
         }
         if newPoint.y > area.maxY {
-            updateDrawingArea(minX: nil, minY: nil, maxX: nil, maxY: newPoint.y)
+            updateDrawingArea(minX: nil, minY: nil, maxX: nil, maxY: newPoint.y + 10)
         }
     }
 
@@ -97,10 +97,24 @@ class DrawableView: UIView {
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()!
         layer.render(in: context)
+        let originalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        guard let area = drawingArea else { return nil }
+        guard let croppedImage = originalImage?.crop(to: area) else { return nil }
+
+        let width = min(20 * croppedImage.size.width / croppedImage.size.height, 20)
+        let height = min(20 * croppedImage.size.height / croppedImage.size.width, 20)
+        let scaledSize = CGSize(width: width, height: height)
+        let scaledImage = croppedImage.scale(to: scaledSize)
+
+        let size = CGSize(width: 28, height: 28)
+        UIGraphicsBeginImageContext(size)
+        let point = CGPoint(x: (28 - scaledImage.size.width) / 2, y: (28 - scaledImage.size.height) / 2)
+        scaledImage.draw(at: point)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        guard let area = drawingArea else { return nil }
-        return image?.crop(to: area)
+        return image
     }
 
 }

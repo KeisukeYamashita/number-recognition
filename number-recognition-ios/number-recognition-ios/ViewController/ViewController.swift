@@ -29,11 +29,11 @@ class ViewController: UIViewController {
 
     @IBAction func recognizeButtonTapped(_ sender: Any) {
         removeBorder(view: drawableView)
-        let scaledImage = drawableView.getImage()?.scale(to: CGSize(width: 28, height: 28))
-        imageView.image = scaledImage
+        let image = drawableView.getImage()
+        imageView.image = image
         setBorder(view: drawableView)
 
-        guard let data = scaledImage?.scan() else { return }
+        guard let data = image?.scan() else { return }
 
         RecognizeNumberService(data: data).request(URLSession.shared) { result in
             switch result {
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func setStatus(_ status: TrainStatus) {
+    private func setStatus(_ status: TrainStatus) {
         trainStatusLabel.text = status.rawValue
     }
 
