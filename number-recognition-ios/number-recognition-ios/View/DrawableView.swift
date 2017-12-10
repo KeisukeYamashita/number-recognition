@@ -20,7 +20,7 @@ class Line {
 
 class DrawableView: UIView {
 
-    var lineWidth: CGFloat = 25.0
+    var lineWidth: CGFloat = 20.0
     var lineColor: UIColor = .black
 
     private var lines: [Line] = []
@@ -66,12 +66,14 @@ class DrawableView: UIView {
         guard let area = drawingArea else { return }
         if newPoint.x < area.minX {
             updateDrawingArea(minX: newPoint.x, minY: nil, maxX: nil, maxY: nil)
-        } else if newPoint.x > area.maxX {
+        }
+        if newPoint.x > area.maxX {
             updateDrawingArea(minX: nil, minY: nil, maxX: newPoint.x, maxY: nil)
         }
         if newPoint.y < area.minY {
             updateDrawingArea(minX: nil, minY: newPoint.y, maxX: nil, maxY: nil)
-        } else if newPoint.y > area.maxY {
+        }
+        if newPoint.y > area.maxY {
             updateDrawingArea(minX: nil, minY: nil, maxX: nil, maxY: newPoint.y)
         }
     }
@@ -88,15 +90,17 @@ class DrawableView: UIView {
     func clear() {
         lines.removeAll()
         setNeedsDisplay()
+        drawingArea = nil
     }
 
-    func getImage() -> UIImage {
+    func getImage() -> UIImage? {
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()!
         layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image!
+        guard let area = drawingArea else { return nil }
+        return image?.crop(to: area)
     }
 
 }

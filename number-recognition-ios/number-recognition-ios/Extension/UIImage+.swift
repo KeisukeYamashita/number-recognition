@@ -10,6 +10,11 @@ import UIKit
 
 extension UIImage {
 
+    func crop(to rect: CGRect) -> UIImage? {
+        guard let img = cgImage?.cropping(to: rect) else { return nil }
+        return UIImage(cgImage: img)
+    }
+
     func scale(to size: CGSize) -> UIImage {
         let newRect = CGRect(x: 0, y: 0, width: size.width, height: size.height).integral
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
