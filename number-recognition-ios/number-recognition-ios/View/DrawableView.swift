@@ -94,14 +94,8 @@ class DrawableView: UIView {
     }
 
     func getImage() -> UIImage? {
-        UIGraphicsBeginImageContext(frame.size)
-        let context = UIGraphicsGetCurrentContext()!
-        layer.render(in: context)
-        let originalImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
         guard let area = drawingArea else { return nil }
-        guard let croppedImage = originalImage?.crop(to: area) else { return nil }
+        guard let croppedImage = getOriginalImage()?.crop(to: area) else { return nil }
 
         let width = min(20 * croppedImage.size.width / croppedImage.size.height, 20)
         let height = min(20 * croppedImage.size.height / croppedImage.size.width, 20)
@@ -115,6 +109,15 @@ class DrawableView: UIView {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+
+    private func getOriginalImage() -> UIImage? {
+        UIGraphicsBeginImageContext(frame.size)
+        let context = UIGraphicsGetCurrentContext()!
+        layer.render(in: context)
+        let originalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return originalImage
     }
 
 }
