@@ -6,7 +6,7 @@ Recognize hand-written digits
 
     $ pip install Flask
     $ pip install numpy
-    $ git clone
+    $ git clone https://github.com/snowman-mh/number-recognition.git
     $ cd number-recognition
 
 ## How to run
