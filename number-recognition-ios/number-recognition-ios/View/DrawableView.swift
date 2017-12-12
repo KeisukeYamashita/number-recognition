@@ -104,6 +104,9 @@ class DrawableView: UIView {
 
         let size = CGSize(width: 28, height: 28)
         UIGraphicsBeginImageContext(size)
+        let v = UIView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+        v.backgroundColor = .white
+        v.layer.render(in: UIGraphicsGetCurrentContext()!)
         let point = CGPoint(x: (28 - scaledImage.size.width) / 2, y: (28 - scaledImage.size.height) / 2)
         scaledImage.draw(at: point)
         let image = UIGraphicsGetImageFromCurrentImageContext()
